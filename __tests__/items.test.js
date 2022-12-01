@@ -95,7 +95,7 @@ describe('items', () => {
     expect(resp.body).toEqual({ ...item, bought: true });
   });
 
-  it.only('UPDATE /api/v1/items/:id should 403 for invalid users', async () => {
+  it('UPDATE /api/v1/items/:id should 403 for invalid users', async () => {
     // create a user
     const [agent] = await registerAndLogin();
     // create a second user
@@ -111,7 +111,7 @@ describe('items', () => {
     expect(resp.status).toBe(403);
   });
 
-  it('DELETE /api/v1/items/:id should delete items for valid user', async () => {
+  it.only('DELETE /api/v1/items/:id should delete items for valid user', async () => {
     const [agent, user] = await registerAndLogin();
     const item = await Item.insert({
       description: 'apples',
